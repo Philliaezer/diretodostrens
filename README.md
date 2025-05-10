@@ -6,8 +6,8 @@ https://www.diretodostrens.com.br/api/
 
 Para obter informações sobre o estado das linhas de trem da região metropolitana de São Paulo.
 
-Obrigado ao @CTassisF pela API pública :)
+Obrigado ao [@CTassisF](https://github.com/CTassisF) pela API pública :)
 
-[!NOTE]
-Esse projeto está em fase beta (sem Semver, mas já acho que faz sentido chamar assim)
-Ele futuramente estará no PyPi.
+> [!NOTE]
+> Esse projeto está em fase beta (sem Semver, mas já acho que faz sentido chamar assim)
+> Ele futuramente estará no PyPi.
