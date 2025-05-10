@@ -186,6 +186,10 @@ class Zona(Linhas):
     def __init__(self, empresa):
         super().__init__()
         self.regiao = regiao
+        self.norte = self.__get([1, 7, 13])
+        self.sul = self.__get([1,4, 5,9, 10])
+        self.leste = self.__get([2, 3, 10, 11, 12, 13])
+        self.oeste = self.__get([7, 8, 9])
         
     @property
     def regiao(self) -> Optional[str]:
