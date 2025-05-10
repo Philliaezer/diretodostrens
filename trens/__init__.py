@@ -1,6 +1,6 @@
 from .dados import *
         
-lines = Linha("Diamante")
+lines = Linhas()
 json = lines.dados
 linhas = lines.ver_nomes()
 
@@ -11,6 +11,10 @@ linhas = lines.ver_nomes()
 def da_linha(valor: Union[int, str], completo: bool=True, verboso: bool=True):
     """
     Retorna o estado de uma linha.
+    
+    :param valor: Nome ou número da linha a ser pesquisada
+    :param completo: A resposta deve ser completa?
+    :param verboso: Deve ser printado qual condição foi retornada?
     """
     valor = str(valor)
     linhas = lines.ver_nomes()

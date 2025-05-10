@@ -1,2 +1,13 @@
-# diretodostrens
-Biblioteca em python para obter informações sobre o estado das linhas de trem metropolitano paulista.
+# Direto dos Trens API
+
+Essa biblioteca em python utiliza a seguinte API REST:
+ 
+https://www.diretodostrens.com.br/api/
+
+Para obter informações sobre o estado das linhas de trem da região metropolitana de São Paulo.
+
+Obrigado ao @CTassisF pela API pública :)
+
+[!NOTE]
+Esse projeto está em fase beta (sem Semver, mas já acho que faz sentido chamar assim)
+Ele futuramente estará no PyPi.
