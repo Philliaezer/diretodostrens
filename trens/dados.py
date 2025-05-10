@@ -28,7 +28,9 @@ class Linhas:
         self.dados = self.__api_request()
         self.nomes = self.lista()
         self.numeros = self.ver_nomes().keys
-        self.statuss = False
+    
+    def __get(self, keys):
+        return { k: v for k, v in self.lista().items() if k in keys }
     
     @classmethod
     def lista(cls) -> dict[int, str]:
@@ -38,6 +40,7 @@ class Linhas:
     def geral(self, escrever: bool=False) -> Optional[str]:
         """
         Retorna (ou imprime) a situação de todas as linhas retornadas pela API
+        :param escrever;: Deve retornar, ou printar o conteúdo?
         
         :return: string
         """
@@ -103,12 +106,10 @@ class Linha(Linhas):
     """
     Representa uma linha dentre as 13 existentes
     """
-    def __init__(self, nome: str):
+    def __init__(self, nome: Union[str, int]):
         super().__init__()
         self.nome = nome
-        self.numero = 10
-        self.statu = "status"
-        self.situacao = "normal"
+        self.numero = None
         
     def teste(self) -> int:
         # Todo: remover
@@ -130,11 +131,11 @@ class Linha(Linhas):
         return None
         
     @property
-    def numero(self):
+    def numero(self) -> Optional[int]:
         return self._numero
         
     @numero.setter
-    def numero(self, valor: int):
+    def numero(self, valor: Optional[int]):
         self._numero = next((int(k) for k, v in self.ver_nomes().items() if v == self.nome), None)
         
     @property
@@ -142,8 +143,50 @@ class Linha(Linhas):
         return self._name
         
     @nome.setter
-    def nome(self, valor: int):
-        self._name = ( valor 
-        if valor in self.nomes.values()
-            else None )
+    def nome(self, valor: Union[str, int]):
+        if str(valor).isnumeric():
+            valores = self.nomes.keys()
+            valor = self.nomes[int(valor)] if valor in valores else None             
+         
+        valores = self.nomes.values()
         
+        self._name = ( valor 
+        if valor in valores
+            else None )
+
+
+
+class Empresa(Linhas):
+    """
+    Representa uma das quatro concessionárias de transporte ferroviário paulista
+    """
+    
+    def __init__(self, empresa):
+        super().__init__()
+        self.nome = nome
+        
+    @property
+    def nome(self) -> Optional[str]:
+        return self._companhia
+        
+    @nome.setter
+    def nome(self, valor: Optional[str]):
+        self._companhia = valor
+        
+        
+class Zona(Linhas):
+    """
+    Representa uma das quatro regiões metropolitanas de São Paulo
+    """
+    
+    def __init__(self, empresa):
+        super().__init__()
+        self.regiao = regiao
+        
+    @property
+    def regiao(self) -> Optional[str]:
+        return self._local
+        
+    @regiao.setter
+    def regiao(self, valor: Optional[str]):
+        self._local = valor
