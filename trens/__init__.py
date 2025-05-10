@@ -2,16 +2,16 @@ from .dados import *
         
 lines = Linha("Diamante")
 json = lines.dados
-
-lines.geral(True)
-
 linhas = lines.ver_nomes()
 
 #todo: 
     # - remover
     # - ou servir de alias para um método da classe Linha
     # - ou ser mais otimizado
-def da_linha(valor, completo=True, verboso=True):
+def da_linha(valor: Union[int, str], completo: bool=True, verboso: bool=True):
+    """
+    Retorna o estado de uma linha.
+    """
     valor = str(valor)
     linhas = lines.ver_nomes()
     
@@ -35,13 +35,3 @@ def da_linha(valor, completo=True, verboso=True):
         return nome
     else:
         return "Nome da linha inválido"
-
-print('== Função "da_linha" ==')
-print(
-da_linha("Diamante"))
-print(da_linha(7))
-
-print('Instancia da Classe "Linha"')
-print(f"Linhas: {linhas}")
-print(lines.numero)
-print(lines.nome)

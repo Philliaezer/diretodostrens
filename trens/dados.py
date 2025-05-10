@@ -1,5 +1,6 @@
 import sys
 import requests
+from typing import Optional, Union
 
 # todos(futuro):
     # - separar linhas por metrô, trem, viamobilidade e viaquatro
@@ -11,13 +12,17 @@ class Linhas:
          
      https://www.diretodostrens.com.br/api
     """
-    __lista = [
-    "Azul","Verde","Vermelha",
-    "Amarela", "Lilás","Rubi",
-    "Diamante","Esmeralda", 
-    "Turquesa", "Coral",
-    "Safira", "Jade", "Prata"
-     ]
+    
+    __lista = {
+        1: "Azul", 2: "Verde",
+        3: "Vermelha",
+        4: "Amarela", 5: "Lilás",
+        7: "Rubi", 8: "Diamante",
+        9: "Esmeralda", 
+        10: "Turquesa", 
+        11: "Coral", 12: "Safira", 
+        13: "Jade", 15: "Prata"
+    }
      
     def __init__(self):
         self.dados = self.__api_request()
@@ -26,10 +31,16 @@ class Linhas:
         self.statuss = False
     
     @classmethod
-    def lista(cls):
+    def lista(cls) -> dict[int, str]:
         return cls.__lista
+        # return cls.__lista
         
-    def geral(self, escrever: bool=False):
+    def geral(self, escrever: bool=False) -> Optional[str]:
+        """
+        Retorna (ou imprime) a situação de todas as linhas retornadas pela API
+        
+        :return: string
+        """
         valores = ""
         
         for data in self.dados:
@@ -41,21 +52,16 @@ class Linhas:
             return valores
         print(valores)
             
-    def teste(self):
+    def teste(self) -> int:
         return 2
         
-    def ver_nomes(self) -> dict:
+    def ver_nomes(self) -> dict[int, str]:
         """
         Retorna um dicionário com todas as linhas e seus códigos
         """
-        return  {
-        str(dados["codigo"]): 
-        self.nomes[indice]
-            for indice, dados in 
-            enumerate(self.dados)
-        }
+        return self.nomes
     
-    def codigos() -> list:
+    def codigos() -> list[str]:
         """
         Retorna uma lista com todos os números das linhas
         
@@ -63,7 +69,7 @@ class Linhas:
         """
         return [ infos["codigo"] for infos in self.dados]
         
-    def estado(self):
+    def estado(self) -> Union[bool, list[str]]:
         """
         Exibe o estado das linhas.
         Se todas estiverem em Operação Normal, retornará True
@@ -77,7 +83,7 @@ class Linhas:
                  anormais += [i]
         return True if not anormais else anormais
         
-    def __api_request(self) -> dict:
+    def __api_request(self) -> dict[Union[int, str, None], Optional[str]]:
         """
         Método privado para fazer requisições a API
         
@@ -97,18 +103,18 @@ class Linha(Linhas):
     """
     Representa uma linha dentre as 13 existentes
     """
-    def __init__(self, nome):
+    def __init__(self, nome: str):
         super().__init__()
         self.nome = nome
         self.numero = 10
         self.statu = "status"
         self.situacao = "normal"
         
-    def teste(self):
+    def teste(self) -> int:
         # Todo: remover
         return 1
         
-    def estado(self, booleano=False):
+    def estado(self, booleano: bool=False) -> Union[bool, str, None]:
         """
         Retorna o estado apenas da linha referenciada no atributo :attr:`nome`
         
@@ -128,16 +134,16 @@ class Linha(Linhas):
         return self._numero
         
     @numero.setter
-    def numero(self, valor):
+    def numero(self, valor: int):
         self._numero = next((int(k) for k, v in self.ver_nomes().items() if v == self.nome), None)
         
     @property
-    def nome(self):
+    def nome(self) -> str:
         return self._name
         
     @nome.setter
-    def nome(self, valor):
+    def nome(self, valor: int):
         self._name = ( valor 
-        if valor in self.nomes
+        if valor in self.nomes.values()
             else None )
         
