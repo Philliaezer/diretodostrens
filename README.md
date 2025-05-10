@@ -11,4 +11,21 @@ Obrigado ao [@CTassisF](https://github.com/CTassisF) pela API pública :)
 > [!NOTE]
 > Esse projeto está em fase beta (sem Semver, mas já acho que faz sentido chamar assim)
 >
-> Ele futuramente estará no PyPi.
+> Ele está disponível no PyPI:
+    
+```sh
+pip install diretodostrens
+```
+
+## Usos:
+    
+```python
+from trens import Linha
+
+diamante = Linha("Diamante")
+# ou
+esmeralda = Linha(9)
+
+print(diamante.estado())
+print(esmeralda.estado())
+```
