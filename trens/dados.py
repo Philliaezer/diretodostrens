@@ -164,6 +164,10 @@ class Empresa(Linhas):
     def __init__(self, empresa):
         super().__init__()
         self.nome = nome
+        self.cptm = self.__get([7, 10, 11, 12, 13])
+        self.metro = self.__get([1, 2, 3, 15])
+        self.viaquatro = self.__get([4])
+        self.viamobilidade = self.__get([5, 8, 9])
         
     @property
     def nome(self) -> Optional[str]:
