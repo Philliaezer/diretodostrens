@@ -22,9 +22,9 @@ setup(
     keywords=[
     "trens", "trem",
     "diretodostrens", "api",
-     "sp", "são paulo", "cptm",
-      "metro", "viamobilidade",
-      "viaquatro"
+    "sp", "são paulo", "cptm",
+    "metro", "viamobilidade",
+    "viaquatro"
   ],
     classifiers=[
         "Development Status :: 3 - Alpha", 

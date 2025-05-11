@@ -180,12 +180,12 @@ class Empresa(Linhas):
         self._companhia = valor if valor.upper() in self.__empresas else None
         
     @classmethod
-    def nomes(cls):
+    def empresas(cls):
         return cls.__empresas
         
     def estado(self, booleano: bool=False) -> Union[bool, str, None]:
         """
-        Retorna o estado apenas das linhas concessionadas pela empresa referenciada no atributo :attr:`regiao`
+        Retorna o estado apenas das linhas concessionadas pela empresa referenciada no atributo :attr:`nome`
         
         :return: Booleano
         """
@@ -203,7 +203,7 @@ class Empresa(Linhas):
         
     def __set_empresa(self):
         if not self.nome == None:
-            for i, empresa in enumerate(self.nomes()):
+            for i, empresa in enumerate(self.empresas()):
                 if self.nome.upper() == empresa:
                     return self.__todos[i]
         return None
