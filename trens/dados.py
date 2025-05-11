@@ -5,6 +5,7 @@ from typing import Optional, Union
 # todos(futuro):
     # - colorizar com colorama
         # diferenciar cores entre linhas e empresas
+    # utilitário cli (poder importar trens.cli)
 class Linhas:
     """
     Representa todas as linhas do transporte ferroviário paulista, suportadas pela API:

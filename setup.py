@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = "0.0.2"
+VERSION = "0.0.3"
 DESCRIPTION = "Checa o estado das linhas de trem de São Paulo (CPTM, Metro, Viaquatro e Viamobilidade)"
 LONG_DESCRIPTION = """
 Interface para a API [DiretoDosTrens](https://static.diretodostrens.com.br/swagger/
@@ -23,7 +23,7 @@ setup(
     "trens", "trem",
     "diretodostrens", "api",
     "sp", "são paulo", "cptm",
-    "metro", "viamobilidade",
+    "metro", "metrô", "viamobilidade",
     "viaquatro"
   ],
     classifiers=[
@@ -31,5 +31,9 @@ setup(
         "Intended Audience :: Developers", 
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent"
-    ]
+    ],
+    project_urls={
+        #"Documentation": "https://github.com/Philliaezer/DiretoDosTrens",
+        "Source": "https://github.com/Philliaezer/DiretoDosTrens"
+    }
 )

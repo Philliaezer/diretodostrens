@@ -29,11 +29,11 @@ esmeralda = Linha(9)
 print(diamante.estado())
 print(esmeralda.estado())
 
-# também é possível ver os dados da região
+# também é possível filtrar os dados por região
 oeste = Zona("Oeste")
 print(oeste.estado())
 
-# ... E da concessionária
+# ... E por concessionária
 cptm = Empresa("CPTM")
 print(cptm.estado())
 ```

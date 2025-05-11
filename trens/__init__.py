@@ -1,5 +1,6 @@
 from .dados import *
-        
+
+# todo: mover para dentro da função       
 lines = Linhas()
 json = lines.dados
 linhas = lines.ver_nomes()
@@ -30,12 +31,10 @@ def da_linha(valor: Union[int, str], completo: bool=True, verboso: bool=True):
                 else False, json
                 )]
             return linhas[valor]
-        else:
-            return "Número da linha inválido"
+        return "Número da linha inválido"
     elif valor in linhas.values():
         if verboso:
             print("Nome encontrado")
         nome=next((k for k, v in linhas.items() if v == valor), None)
         return nome
-    else:
-        return "Nome da linha inválido"
+    return "Nome da linha inválido"
